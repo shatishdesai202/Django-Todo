@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8123ceefef.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="jumbotron">
+            <a href="{% url 'back_to_home' %}" class="btn btn-lg btn-info">Back To Home</a>
+            <h1 class="display-4">Todo App</h1>
+            <p class="lead">Simple Django App || this app will improve your database grip</p>
+            <hr class="my-4">
+            {% block body %}
+            {% endblock %}
+            </p>
+        </div>
+    </div>
+</body>
+</html>

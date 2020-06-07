@@ -1,0 +1,29 @@
+{% extends 'app/base.htm' %}
+{% block body %}
+{% load crispy_forms_tags %}
+
+
+    <div class="container">
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input type="submit" class="btn btn-md btn-success">
+            <a href="{% url 'todo_delete_complete' %}" class="btn btn-md btn-warning">Delete Complete</a>
+            <a href="{% url 'todo_delete_all' %}" class="btn btn-md btn-danger">Delete all</a>
+        </form>
+    </div>
+   <br><hr>
+    <div class="container">
+        {{error}}
+        <ul class="list-group">
+        {% for obj in obj  %}
+            {% if obj.complete == True %}
+            <strike><li class="list-group-item">{{obj}}<span class="float-right"><a href="{% url 'todo_update' obj.id %}"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'todo_delete' obj.id %}"><i class="fas fa-user-minus"></i></a></span></li></strike>
+            {% else %}
+                <li class="list-group-item">{{obj}}<span class="float-right"><a href="{% url 'todo_update' obj.id %}"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'todo_delete' obj.id %}"><i class="fas fa-user-minus"></i></a></span></li> 
+            {% endif %}   
+        {% endfor %}
+        </ul>
+    </div>
+
+    {% endblock %}
